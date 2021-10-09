@@ -17,7 +17,7 @@ class Directory extends Component {
     render() {
         const directory = this.props.campsites.map(campsite => {
             return (
-                <div key={campsite.id} className="col">
+                <div key={campsite.id} className="col-sm-6">
                     <Card onClick={() => this.onCampsiteSelect(campsite)} >
                     <CardImg width="100%" src={campsite.image} alt={campsite.name} />
                         <CardImgOverlay>
