@@ -10,24 +10,24 @@ class CampsiteInfo extends Component {
 
         return (
             <div className="col-md-5 m-1">
-                 {/* <Card>
+                 <Card>
                     <CardImg top src={campsite.image} alt={campsite.name} />
                     <CardBody>
                         <CardTitle>{campsite.name}</CardTitle>
                         <CardText>{campsite.description}</CardText>
                     </CardBody>
-                </Card> */}
+                </Card>
             </div>
         )
     }
 
     render() {
-        if (this.props.campsite !== null || this.props.campsite !== undefined) {
+        if (this.props.campsite) {
             return (
             <div className="row">
             {this.renderCampsite(this.props.campsite)}
             </div>);
-        };
+        }
         
         return (
           <div />
