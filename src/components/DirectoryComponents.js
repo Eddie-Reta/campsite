@@ -1,9 +1,10 @@
+import React from "react";
 import {Card, CardImg, CardImgOverlay, CardTitle} from "reactstrap";
-import CampsiteInfo from "./CampsiteInfoComponent";
+//import CampsiteInfo from "./CampsiteInfoComponent";
 
-function RenderDirectoryItem(campsite, onClick) {
+function RenderDirectoryItem({campsite, onClick}) {
     return (
-        <Card onClick={() => this.props.onClick(campsite.id)} >
+        <Card onClick={() => onClick(campsite.id)} >
                     <CardImg width="100%" src={campsite.image} alt={campsite.name} />
                         <CardImgOverlay>
                             <CardTitle>{campsite.name}</CardTitle>

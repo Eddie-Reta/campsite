@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 function RenderCampsite({campsite}) {
+    return (
     <Card>
         <CardImg top src={campsite.image} alt={campsite.name} />
         <CardBody>
@@ -9,6 +10,7 @@ function RenderCampsite({campsite}) {
             <CardText>{campsite.description}</CardText>
         </CardBody>
     </Card>
+    );
 }
 
 function RenderComments({comments}) {
