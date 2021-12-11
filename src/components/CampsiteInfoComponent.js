@@ -6,6 +6,7 @@ import {Loading} from "./LoadingComponent";
 import { baseUrl } from '../shared/baseUrl';
 
 
+
 function RenderCampsite({campsite}) {
     return (
     <Card>
@@ -32,7 +33,7 @@ function RenderComments({comments, postComment, campsiteId}) {
                        
                     )
                 })}
-                <CommentForm campsiteId={campsiteId} addComment={addComment} />
+                <CommentForm campsiteId={campsiteId} postComment={postComment} />
             </div>
         )
     }
