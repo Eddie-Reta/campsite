@@ -138,17 +138,17 @@ class CommentForm extends Component {
                 <LocalForm onSubmit={values => this.handleSubmit(values)} className="form-group">
                     <div className="form-group">
                         <Label  htmlFor="rating">Rating</Label>
-                        <Control.select model=".rating" className="form-control" name="rating">
+                        <Control.Select model=".rating" className="form-control" name="rating">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
-                        </Control.select>
+                        </Control.Select>
                     </div>
                     <div className="form-group">
                         <Label htmlFor="author">Your Name</Label>
-                        <Control.text model=".author" id='author' name="author" placeholder="Your Name" className="form-control" validators={{
+                        <Control.Text model=".author" id='author' name="author" placeholder="Your Name" className="form-control" validators={{
                             required,
                             minLength: minLength(2),
                             maxLength: maxLength(15)
@@ -167,7 +167,7 @@ class CommentForm extends Component {
                     </div>
                     <div className="form-group">
                         <Label htmlFor="text">Write You Comment!</Label>
-                        <Control.textarea model=".text" id="text" name="text" rows="6" className="form-control" />
+                        <Control.Textarea model=".text" id="text" name="text" rows="6" className="form-control" />
                     </div>
                         <Button className="primary" type="submit">
                         <i class="fa fa-pencil" aria-hidden="true" /> Submit Comment

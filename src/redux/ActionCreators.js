@@ -156,3 +156,83 @@ export const postComment = (campsiteId, rating, author, text) => dispatch => {
             alert('Your comment could not be posted\nError: ' + error.message);
         });
 };
+
+export const fetchPartners = () => dispatch => {
+    dispatch(partnersLoading());
+    return fetch(baseUrl + "partners")
+        .then(
+            response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                const errMess = new Error(error.message);
+                throw errMess;
+            }
+        )
+        .then(response => response.json())
+        .then(partners => dispatch(addPartners(partners)))
+        .catch(error => dispatch(partnersFailed(error.message)));
+};
+
+export const partnersLoading = () => ({
+    type: ActionTypes.PARTNERS_LOADING
+});
+
+export const addPartners = partners => ({
+    type: ActionTypes.ADD_PARTNERS,
+    payload: partners
+});
+
+export const partnersFailed = errMess => ({
+    type: ActionTypes.PARTNERS_FAILED,
+    payload: errMess
+});
+
+export const postFeedback = feedback => () => {
+    return fetch(baseUrl + 'feedback', {
+        method: 'POST',
+        body: JSON.stringify(feedback),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+    })
+    // return fetch(baseUrl + "feedback")
+    //     .then(response => {
+    //         if(response.ok) {
+    //             return response;
+    //         } else {
+    //             const error = new Error(`Error ${response.status}: ${response.statusText}`);
+    //             error.response = response;
+    //             throw error;
+    //         };
+    //     })
+        .then(response => alert(response.json()))
+        .catch(error => alert(error)) 
+};
+
+// export const fetchComments = () => dispatch => {
+//     return fetch(baseUrl + 'comments')
+//         .then(response => {
+//                 if (response.ok) {
+//                     return response;
+//                 } else {
+//                     const error = new Error(`Error ${response.status}: ${response.statusText}`);
+//                     error.response = response;
+//                     throw error;
+//                 }
+//             },
+//             error => {
+//                 const errMess = new Error(error.message);
+//                 throw errMess;
+//             }
+//         )
+//         .then(response => response.json())
+//         .then(comments => dispatch(addComments(comments)))
+//         .catch(error => dispatch(commentsFailed(error.message)));
+// };
